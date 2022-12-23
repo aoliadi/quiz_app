@@ -1,0 +1,26 @@
+@import url(./general/normalize.css);
+@import url(./general/variables.css);
+@import url(./general/reset.css);
+@import url(./general/font.css);
+
+body {
+  /* position: relative; */
+  min-width: 100vw;
+  min-height: 100vh;
+  border: 2px solid blue;
+  background-color: var(--bg-color);
+  color: var(--text-black);
+  /* padding: 1em;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center; */
+}
+
+/* .header__heading {
+  border: 2px solid red;
+  font-size: 3.5em;
+  text-align: center;
+  min-width: 100vw;
+} */
