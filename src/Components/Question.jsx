@@ -39,12 +39,19 @@ const questions = [
     isNiche: false,
   },
 ];
-// const MAX_QUESTIONS = 3;
-// const CORRECT_SCORE = 10;
+const BLACK_COLOR = "#333";
+const WHITE_COLOR = "#fff";
+const CORRECT_COLOR = "green";
+const INCORRECT_COLOR = "red";
+
+const MAX_QUESTIONS = 3;
+// const OBTAINABLE_SCORE = 10;
+// const TOTAL_OBTAINABLE_SCORE = OBTAINABLE_SCORE * MAX_QUESTIONS;
 
 function Question() {
+  const [isCorrect, setIsCorrect] = useState(false);
   // const [totalScore, setTotalScore] = useState(0);
-  // const [questionCounter, setQuestionCounter] = useState(null);
+  const [questionCounter, setQuestionCounter] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   // let availableQuestions = [];
   const [availableQuestions, setAvailableQuestions] = useState(null);
@@ -55,27 +62,45 @@ function Question() {
   };
 
   const chooseCurrentQuestion = () => {
+    if (MAX_QUESTIONS === questionCounter) {
+      return;
+    }
+
     const questionToDisplay = Math.floor(
       Math.random() * availableQuestions.length
     );
     setCurrentQuestion([availableQuestions[questionToDisplay]]);
-    // setQuestionCounter((prev) => prev + 1);
+    setQuestionCounter((prev) => prev + 1);
 
     // setAvailableQuestions((prevQuestionArr) =>
     //   prevQuestionArr.splice(questionToDisplay, 1)
     // );
   };
 
-  const checkAnswer = (choice) => {
-    if (choice === answerToCurrentQuestion) {
-      console.log("correct");
-      return;
+  const checkAnswer = (e) => {
+    const clickedOption = e.target;
+    let colorToApply = INCORRECT_COLOR;
+
+    if (clickedOption.dataset.option === answerToCurrentQuestion) {
+      colorToApply = CORRECT_COLOR;
     }
-    console.log("wrong");
+
+    clickedOption.lastChild.style.backgroundColor = colorToApply;
+    clickedOption.lastChild.style.color = WHITE_COLOR;
+
+    setTimeout(() => {
+      resetOption(clickedOption);
+      chooseCurrentQuestion();
+    }, 1500);
   };
 
   const randomizeArray = (arr) => {
     return arr.sort(() => 0.5 - Math.random());
+  };
+
+  const resetOption = (option) => {
+    option.lastChild.style.backgroundColor = WHITE_COLOR;
+    option.lastChild.style.color = BLACK_COLOR;
   };
 
   useEffect(() => {
@@ -107,7 +132,7 @@ function Question() {
                     className={question.option}
                     data-option={optionLabels[id]}
                     onClick={(e) => {
-                      checkAnswer(e.target.dataset.option);
+                      checkAnswer(e);
                     }}
                   >
                     <p className={question.option_label}>{optionLabels[id]}</p>
