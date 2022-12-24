@@ -44,11 +44,11 @@ const questions = [
 
 function Question() {
   // const [totalScore, setTotalScore] = useState(0);
-  const [questionCounter, setQuestionCounter] = useState(null);
+  // const [questionCounter, setQuestionCounter] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   // let availableQuestions = [];
   const [availableQuestions, setAvailableQuestions] = useState(null);
-  // let answerToCurrentQuestion = "";
+  let answerToCurrentQuestion = "";
 
   const getAllQuestions = () => {
     setAvailableQuestions(questions);
@@ -59,11 +59,23 @@ function Question() {
       Math.random() * availableQuestions.length
     );
     setCurrentQuestion([availableQuestions[questionToDisplay]]);
-    setQuestionCounter((prev) => prev + 1);
+    // setQuestionCounter((prev) => prev + 1);
 
     // setAvailableQuestions((prevQuestionArr) =>
     //   prevQuestionArr.splice(questionToDisplay, 1)
     // );
+  };
+
+  const checkAnswer = (choice) => {
+    if (choice === answerToCurrentQuestion) {
+      console.log("correct");
+      return;
+    }
+    console.log("wrong");
+  };
+
+  const randomizeArray = (arr) => {
+    return arr.sort(() => 0.5 - Math.random());
   };
 
   useEffect(() => {
@@ -76,19 +88,27 @@ function Question() {
     <>
       <button onClick={chooseCurrentQuestion}>Start</button>
       {currentQuestion?.map((obj, id) => {
-        const options = [...obj.incorrectAnswers, obj.correctAnswer];
+        // answerToCurrentQuestion = obj.correctAnswer;
         const optionLabels = ["a", "b", "c", "d"];
+        const options = [...obj.incorrectAnswers, obj.correctAnswer];
+        randomizeArray(options);
 
         return (
           <section key={id} className={question.container}>
             <h2 className={question.question}>{obj.question}</h2>
             <ul className={question.options}>
               {options.map((option, id) => {
+                if (obj.correctAnswer === option) {
+                  answerToCurrentQuestion = optionLabels[id];
+                }
                 return (
                   <li
                     key={id}
                     className={question.option}
                     data-option={optionLabels[id]}
+                    onClick={(e) => {
+                      checkAnswer(e.target.dataset.option);
+                    }}
                   >
                     <p className={question.option_label}>{optionLabels[id]}</p>
                     <p className={question.option_text}>{option}</p>
