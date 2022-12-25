@@ -112,6 +112,20 @@ function Question() {
   return (
     <>
       <button onClick={chooseCurrentQuestion}>Start</button>
+
+      <header className={question.header_container}>
+        <ul className={question.hud_container}>
+          <li className={question.hud_item}>
+            <h3 className={question.hud_title}>Questions</h3>
+            <p className={question.hud_value}>1/3</p>
+          </li>
+          <li className={question.hud_item}>
+            <h3 className={question.hud_title}>Score</h3>
+            <p className={question.hud_value}>0</p>
+          </li>
+        </ul>
+      </header>
+
       {currentQuestion?.map((obj, id) => {
         // answerToCurrentQuestion = obj.correctAnswer;
         const optionLabels = ["a", "b", "c", "d"];
@@ -119,7 +133,7 @@ function Question() {
         randomizeArray(options);
 
         return (
-          <section key={id} className={question.container}>
+          <section key={id} className={question.question_container}>
             <h2 className={question.question}>{obj.question}</h2>
             <ul className={question.options}>
               {options.map((option, id) => {

@@ -1,5 +1,35 @@
-.container {
+.header_container {
   /* border: 1px solid red; */
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.hud_container {
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.hud_item {
+  /* border: 1px solid #000; */
+  /* display: flex; */
+  text-align: center;
+}
+
+.hud_title {
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.hud_value {
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: var(--header-color);
+}
+
+.question_container {
+  /* border: 1px solid blue; */
   max-width: 700px;
   margin: 1.5rem 3.5rem;
 }
