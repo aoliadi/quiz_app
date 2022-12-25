@@ -44,13 +44,13 @@ const WHITE_COLOR = "#fff";
 const CORRECT_COLOR = "green";
 const INCORRECT_COLOR = "red";
 
-const MAX_QUESTIONS = 3;
-// const OBTAINABLE_SCORE = 10;
+const MAX_QUESTIONS = 5;
+const OBTAINABLE_SCORE = 2;
 // const TOTAL_OBTAINABLE_SCORE = OBTAINABLE_SCORE * MAX_QUESTIONS;
 
 function Question() {
-  const [isCorrect, setIsCorrect] = useState(false);
-  // const [totalScore, setTotalScore] = useState(0);
+  // const [isCorrect, setIsCorrect] = useState(false);
+  const [totalScore, setTotalScore] = useState(0);
   const [questionCounter, setQuestionCounter] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   // let availableQuestions = [];
@@ -82,6 +82,7 @@ function Question() {
     let colorToApply = INCORRECT_COLOR;
 
     if (clickedOption.dataset.option === answerToCurrentQuestion) {
+      incrementScoreBy(OBTAINABLE_SCORE);
       colorToApply = CORRECT_COLOR;
     }
 
@@ -103,6 +104,10 @@ function Question() {
     option.lastChild.style.color = BLACK_COLOR;
   };
 
+  const incrementScoreBy = (score) => {
+    setTotalScore((prev) => prev + score);
+  };
+
   useEffect(() => {
     getAllQuestions();
 
@@ -113,24 +118,30 @@ function Question() {
     <>
       <button onClick={chooseCurrentQuestion}>Start</button>
 
-      <header className={question.header_container}>
-        <ul className={question.hud_container}>
-          <li className={question.hud_item}>
-            <h3 className={question.hud_title}>Questions</h3>
-            <p className={question.hud_value}>1/3</p>
-          </li>
-          <li className={question.hud_item}>
-            <h3 className={question.hud_title}>Score</h3>
-            <p className={question.hud_value}>0</p>
-          </li>
-        </ul>
-      </header>
+      {currentQuestion && (
+        <header className={question.header_container}>
+          <ul className={question.hud_container}>
+            <li className={question.hud_item}>
+              <h3 className={question.hud_title}>Questions</h3>
+              <p className={question.hud_value}>
+                {questionCounter || 0}/{MAX_QUESTIONS}
+              </p>
+            </li>
+            <li className={question.hud_item}>
+              <h3 className={question.hud_title}>Score</h3>
+              <p className={question.hud_value}>{totalScore || 0}</p>
+            </li>
+          </ul>
+        </header>
+      )}
 
       {currentQuestion?.map((obj, id) => {
         // answerToCurrentQuestion = obj.correctAnswer;
         const optionLabels = ["a", "b", "c", "d"];
-        const options = [...obj.incorrectAnswers, obj.correctAnswer];
-        randomizeArray(options);
+        const options = randomizeArray([
+          ...obj.incorrectAnswers,
+          obj.correctAnswer,
+        ]);
 
         return (
           <section key={id} className={question.question_container}>
