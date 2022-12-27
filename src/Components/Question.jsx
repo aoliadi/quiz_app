@@ -1,5 +1,6 @@
 import question from "../css/question.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Hud from "./Hud";
 
 const questions = [
   {
@@ -69,6 +70,7 @@ function Question() {
     const questionToDisplay = Math.floor(
       Math.random() * availableQuestions.length
     );
+    // theQues=
     setCurrentQuestion([availableQuestions[questionToDisplay]]);
     setQuestionCounter((prev) => prev + 1);
 
@@ -78,6 +80,7 @@ function Question() {
   };
 
   const checkAnswer = (e) => {
+    // console.log(e);
     const clickedOption = e.target;
     let colorToApply = INCORRECT_COLOR;
 
@@ -85,7 +88,7 @@ function Question() {
       incrementScoreBy(OBTAINABLE_SCORE);
       colorToApply = CORRECT_COLOR;
     }
-
+    // console.log(colorToApply);
     clickedOption.lastChild.style.backgroundColor = colorToApply;
     clickedOption.lastChild.style.color = WHITE_COLOR;
 
@@ -105,6 +108,8 @@ function Question() {
   };
 
   const incrementScoreBy = (score) => {
+    // totalScore += score;
+    // console.log(totalScore);
     setTotalScore((prev) => prev + score);
   };
 
@@ -120,28 +125,24 @@ function Question() {
 
       {currentQuestion && (
         <header className={question.header_container}>
-          <ul className={question.hud_container}>
-            <li className={question.hud_item}>
-              <h3 className={question.hud_title}>Questions</h3>
-              <p className={question.hud_value}>
-                {questionCounter || 0}/{MAX_QUESTIONS}
-              </p>
-            </li>
-            <li className={question.hud_item}>
-              <h3 className={question.hud_title}>Score</h3>
-              <p className={question.hud_value}>{totalScore || 0}</p>
-            </li>
-          </ul>
+          <Hud
+            questionCounter={questionCounter}
+            MAX_QUESTIONS={MAX_QUESTIONS}
+            totalScore={totalScore}
+          />
         </header>
       )}
 
       {currentQuestion?.map((obj, id) => {
-        // answerToCurrentQuestion = obj.correctAnswer;
+        // console.count("map renders");
+        // answerToCurrentQuestion = ;
         const optionLabels = ["a", "b", "c", "d"];
-        const options = randomizeArray([
-          ...obj.incorrectAnswers,
-          obj.correctAnswer,
-        ]);
+        const options = [obj.correctAnswer, ...obj.incorrectAnswers];
+
+        // const options = randomizeArray([
+        //   ...obj.incorrectAnswers,
+        //   obj.correctAnswer,
+        // ]);
 
         return (
           <section key={id} className={question.question_container}>
@@ -169,28 +170,6 @@ function Question() {
           </section>
         );
       })}
-      {/* <h2 className={question.question}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis,
-          asperiores!
-        </h2>
-      <ul className={question.options}>
-        <li className={question.option} data-option="A">
-          <p className={question.option_label}>a</p>
-          <p className={question.option_text}>option</p>
-        </li>
-        <li className={question.option}>
-          <p className={question.option_label}>b</p>
-          <p className={question.option_text}>option</p>
-        </li>
-        <li className={question.option}>
-          <p className={question.option_label}>c</p>
-          <p className={question.option_text}>option</p>
-        </li>
-        <li className={question.option}>
-          <p className={question.option_label}>d</p>
-          <p className={question.option_text}>option</p>
-        </li>
-      </ul> */}
     </>
   );
 }
