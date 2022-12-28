@@ -37,21 +37,3 @@
 .input:hover {
   /* border: 0.1rem solid black; */
 }
-
-.btn {
-  padding: 0.85rem;
-  width: 20rem;
-  max-width: 150px;
-  text-align: center;
-  margin: 0.5rem;
-  text-transform: capitalize;
-  border: 0.1rem solid var(--header-color);
-  background-color: #fff;
-  color: var(--header-color);
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: var(--header-color);
-  color: #fff;
-}

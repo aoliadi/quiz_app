@@ -23,14 +23,14 @@ function ScorePage() {
             ref={username}
             className={scorepage.input}
           />
-          <button className={scorepage.btn} onClick={handleSave}>
+          <button className="btn" onClick={handleSave}>
             save
           </button>
         </form>
-        <a href="" className={scorepage.btn}>
+        <a href="" className="btn">
           play again
         </a>
-        <a href="" className={scorepage.btn}>
+        <a href="" className="btn">
           go home
         </a>
       </section>
