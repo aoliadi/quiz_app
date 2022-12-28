@@ -8,16 +8,27 @@ body {
   min-height: 100vh;
   background-color: var(--bg-color);
   color: var(--text-black);
-
-  /* display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center; */
 }
 
-/* .header__heading {
-  border: 2px solid red;
-  font-size: 3.5em;
+.btn {
+  text-transform: capitalize;
   text-align: center;
-  min-width: 100vw;
-} */
+  width: 20rem;
+  max-width: 150px;
+  padding: 0.85rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  border: 0.1rem solid var(--header-color);
+  color: var(--header-color);
+  background-color: #fff;
+}
+
+.btn:hover {
+  background-color: var(--header-color);
+  color: #fff;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+}

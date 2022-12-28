@@ -1,16 +1,20 @@
 import home from "../css/home.module.css";
 
-function Home() {
+function Home({ memoizedPickAQuestion, setStartGame }) {
   return (
     <>
       <section className={home.container}>
         <h1 className={home.title}>Quick Quiz</h1>
-        <a href="" className={home.btn}>
+        <button
+          className="btn"
+          onClick={() => {
+            memoizedPickAQuestion();
+            setStartGame(true);
+          }}
+        >
           play
-        </a>
-        <a href="" className={home.btn}>
-          high scores
-        </a>
+        </button>
+        <button className="btn">high scores</button>
       </section>
     </>
   );

@@ -1,12 +1,11 @@
 .header_container {
-  /* border: 1px solid red; */
   width: 100%;
+  max-width: 800px;
   padding: 1rem 2rem;
   margin-bottom: 3rem;
 }
 
 .question_container {
-  /* border: 1px solid blue; */
   max-width: 700px;
   margin: 1.5rem 3.5rem;
 }
@@ -16,19 +15,16 @@
 }
 
 .option {
-  /* background-color: white; */
   display: flex;
   width: 100%;
   margin: 1rem 0;
-  /* border: 2px solid red; */
   background: transparent;
   z-index: 1000;
-  /* border: 0.1rem solid rgb(86, 165, 235, 0.25); */
 }
 
 .option:hover {
   cursor: pointer;
-  /* outline: 2px solid red; */
+  box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5);
 }
 
 .option_label {
