@@ -1,13 +1,20 @@
 .container {
-  /* border: 1px solid red; */
+  /* border: 1px solid green; */
+  /* max-height: 120px; */
   width: 100%;
   /* box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5); */
+
+  /* position: sticky; */
+  /* top: 0; */
 }
 
 .list_container {
   border-bottom: 1px solid var(--text-black);
-  padding: 1.8rem;
+  /* border: 2px solid blue; */
+  padding: 1.5rem;
   margin: 1.5rem auto;
+  /* margin: 0 auto; */
+  /* padding: 0 auto; */
   max-width: 70rem;
 
   display: flex;

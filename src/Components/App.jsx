@@ -1,9 +1,9 @@
-import Home from "./Home";
+import { useEffect, useMemo, useState } from "react";
+import { questionBank, MAX_QUESTIONS } from "../Utils/questionBank";
 import app from "../css/app.module.css";
+import Home from "./Home";
 import ScorePage from "./ScorePage";
 import Game from "./Game";
-import { questionBank, MAX_QUESTIONS } from "../Utils/questionBank";
-import { useEffect, useMemo, useState } from "react";
 
 const App = () => {
   const [availableQuestions, setAvailableQuestions] = useState(null);
@@ -71,6 +71,12 @@ const App = () => {
       </main>
     </>
   );
+
+  // return (
+  //   <>
+  //     <RouterProvider router={quizAppRouter} />
+  //   </>
+  // );
 };
 
 export default App;
