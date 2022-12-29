@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+}
+
+.footnote {
+  display: block;
+  text-align: center;
+
+  border-top: 1px solid var(--text-black);
+  padding: 1.8rem;
+  margin: 1.5rem auto;
+  max-width: 70rem;
+}
+
+.creator:hover {
+  text-decoration: underline;
+}
