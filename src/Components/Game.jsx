@@ -1,17 +1,74 @@
+import { useEffect, useMemo, useState } from "react";
+import { useQuery } from "react-query";
 import question from "../css/question.module.css";
+import { MAX_QUESTIONS, triviaApiUri } from "../Utils/questionBank";
 
 import Hud from "./Hud";
 import Question from "./Question";
 
-function Game({
-  endGame,
-  currentQuestion,
-  totalScore,
-  MAX_QUESTIONS,
-  questionCounter,
-  setTotalScore,
-  memoizedPickAQuestion,
-}) {
+function Game({ endGame, setEndGame, totalScore, setTotalScore }) {
+  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [questionCounter, setQuestionCounter] = useState(0);
+
+  const getAllQuestions = async () => {
+    const res = await fetch(triviaApiUri);
+    const data = await res.json();
+    return data;
+  };
+
+  const {
+    data: availableQuestions,
+    isLoading,
+    isSuccess,
+    isError,
+  } = useQuery("triviaQuestions", getAllQuestions);
+
+  const pickAQuestion = () => {
+    if (MAX_QUESTIONS === questionCounter || questionCounter > MAX_QUESTIONS) {
+      setEndGame(true);
+      setCurrentQuestion(null);
+      return;
+    }
+
+    if (!availableQuestions) return;
+
+    const questionToDisplay = Math.floor(
+      Math.random() * availableQuestions.length
+    );
+    setCurrentQuestion([availableQuestions[questionToDisplay]]);
+    setQuestionCounter((prev) => prev + 1);
+
+    // setAvailableQuestions((prevQuestionArr) =>
+    //   prevQuestionArr.splice(questionToDisplay, 1)
+    // );
+  };
+
+  const memoizedPickAQuestion = useMemo(
+    () => pickAQuestion,
+    [availableQuestions, questionCounter]
+  );
+
+  useEffect(() => {
+    memoizedPickAQuestion();
+    return () => {};
+  }, [isSuccess]);
+
+  if (isError) {
+    return (
+      <>
+        <h1>Error! Could not fetch.</h1>
+      </>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <>
+        <h1>Loading...</h1>
+      </>
+    );
+  }
+
   return (
     <>
       {endGame || (

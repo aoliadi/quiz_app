@@ -1,6 +1,6 @@
 import home from "../css/home.module.css";
 
-function Home({ memoizedPickAQuestion, setStartGame, highScores }) {
+function Home({ setStartGame, highScores }) {
   function showHighScores() {
     console.log(highScores);
   }
@@ -9,13 +9,7 @@ function Home({ memoizedPickAQuestion, setStartGame, highScores }) {
     <>
       <section className={home.container}>
         <h1 className={home.title}>Quick Quiz</h1>
-        <button
-          className="btn"
-          onClick={() => {
-            memoizedPickAQuestion();
-            setStartGame(true);
-          }}
-        >
+        <button className="btn" onClick={() => setStartGame(true)}>
           play
         </button>
         <button className="btn" onClick={showHighScores}>
