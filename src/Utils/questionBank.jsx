@@ -1,5 +1,109 @@
 export const questionBank = [
   {
+    category: "Geography",
+    id: "626030924b176d54800e3d2e",
+    correctAnswer: "Rabat",
+    incorrectAnswers: ["Lagos", "Kinshasa", "Douala"],
+    question: "Which of these cities is in Morocco?",
+    tags: ["cities", "africa", "geography"],
+    type: "Multiple Choice",
+    difficulty: "medium",
+    regions: [],
+    isNiche: false,
+  },
+  {
+    category: "Geography",
+    id: "626030b14b176d54800e3d37",
+    correctAnswer: "Algeria",
+    incorrectAnswers: [
+      "Cameroon",
+      "Democratic Republic of the Congo",
+      "Senegal",
+    ],
+    question: "Where would you find the city of Algiers?",
+    tags: ["cities", "africa", "geography"],
+    type: "Multiple Choice",
+    difficulty: "medium",
+    regions: [],
+    isNiche: false,
+  },
+  {
+    category: "Geography",
+    id: "6233846262eaad73716a8c05",
+    correctAnswer: "Arabic",
+    incorrectAnswers: ["Hebrew", "Egyptian", "Italian"],
+    question: "What is the official language of Egypt?",
+    tags: ["africa", "language", "the_middle_east", "geography"],
+    type: "Multiple Choice",
+    difficulty: "medium",
+    regions: [],
+    isNiche: false,
+  },
+  {
+    category: "Geography",
+    id: "6233848062eaad73716a8c11",
+    correctAnswer: "Mount Kenya",
+    incorrectAnswers: ["Mount Uganda", "Mount Nigeria", "Mount Egypt"],
+    question: "What is the second highest mountain in Africa?",
+    tags: ["mountains", "africa", "geography"],
+    type: "Multiple Choice",
+    difficulty: "medium",
+    regions: [],
+    isNiche: false,
+  },
+  {
+    category: "Geography",
+    id: "623384ef62eaad73716a8c3e",
+    correctAnswer: "Lake Victoria",
+    incorrectAnswers: ["Lake Huron", "Lake Baikal", "Lake Malawi"],
+    question: "What lake is the source of the White Nile?",
+    tags: ["africa", "rivers", "bodies_of_water", "geography"],
+    type: "Multiple Choice",
+    difficulty: "medium",
+    regions: [],
+    isNiche: false,
+  },
+  {
+    category: "Geography",
+    id: "622a1c357cc59eab6f94fff8",
+    correctAnswer: "Algiers",
+    incorrectAnswers: ["Oran", "Constantine", "Rabat"],
+    question: "What is the capital of Algeria?",
+    tags: ["capital_cities", "africa", "geography"],
+    type: "Multiple Choice",
+    difficulty: "medium",
+    regions: [],
+    isNiche: false,
+  },
+  {
+    category: "Geography",
+    id: "626030544b176d54800e3d1d",
+    correctAnswer: "South Africa",
+    incorrectAnswers: ["Ethiopia", "Algeria", "Tunisia"],
+    question: "In which country is the city of Pretoria?",
+    tags: ["cities", "africa", "geography"],
+    type: "Multiple Choice",
+    difficulty: "medium",
+    regions: [],
+    isNiche: false,
+  },
+  {
+    category: "Geography",
+    id: "626030274b176d54800e3d10",
+    correctAnswer: "South Africa",
+    incorrectAnswers: [
+      "Senegal",
+      "Democratic Republic of the Congo",
+      "Nigeria",
+    ],
+    question: "Durban is a city in which country?",
+    tags: ["cities", "africa", "geography"],
+    type: "Multiple Choice",
+    difficulty: "medium",
+    regions: [],
+    isNiche: false,
+  },
+  {
     category: "Sport & Leisure",
     id: "622a1c347cc59eab6f94f86d",
     correctAnswer: "Cricket",
@@ -37,6 +141,10 @@ export const questionBank = [
   },
 ];
 
-export const MAX_QUESTIONS = 3;
+export const MAX_QUESTIONS = 8;
 export const OBTAINABLE_SCORE = 5;
 export const TOTAL_OBTAINABLE_SCORE = OBTAINABLE_SCORE * MAX_QUESTIONS;
+export const triviaApiUri =
+  // "https://the-trivia-api.com/api/questions?categories=geography&limit=8&region=NG&difficulty=medium&tags=africa";
+
+  `https://the-trivia-api.com/api/questions?limit=${MAX_QUESTIONS + 3}`;
