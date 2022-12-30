@@ -2,8 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { questionBank, MAX_QUESTIONS } from "../Utils/questionBank";
 import app from "../css/app.module.css";
 import Home from "./Home";
-import ScorePage from "./ScorePage";
+import SaveScore from "./SaveScore";
 import Game from "./Game";
+import HighScore from "./HighScore";
 
 const App = () => {
   const [availableQuestions, setAvailableQuestions] = useState(null);
@@ -12,13 +13,29 @@ const App = () => {
   const [totalScore, setTotalScore] = useState(0);
   const [endGame, setEndGame] = useState(false);
   const [startGame, setStartGame] = useState(false);
+  const [highScores, setHighScores] = useState([]);
+
+  useEffect(() => {
+    console.log(highScores);
+
+    return () => {
+      resetGame();
+    };
+  }, [highScores]);
+
+  const resetGame = () => {
+    setQuestionCounter(null);
+    setAvailableQuestions(null);
+    setTotalScore(0);
+    // setTotalScore(0);
+  };
 
   const getAllQuestions = () => {
     setAvailableQuestions(questionBank);
   };
 
   const pickAQuestion = () => {
-    if (MAX_QUESTIONS === questionCounter) {
+    if (MAX_QUESTIONS === questionCounter || questionCounter > MAX_QUESTIONS) {
       setEndGame(true);
       setCurrentQuestion(null);
       return;
@@ -51,6 +68,7 @@ const App = () => {
       <main className={app.container}>
         {startGame && (
           <Game
+            endGame={endGame}
             currentQuestion={currentQuestion}
             setTotalScore={setTotalScore}
             totalScore={totalScore}
@@ -63,20 +81,17 @@ const App = () => {
         {startGame || (
           <Home
             setStartGame={setStartGame}
+            highScores={highScores}
             memoizedPickAQuestion={memoizedPickAQuestion}
           />
         )}
 
-        {endGame && <ScorePage />}
+        {endGame && (
+          <SaveScore totalScore={totalScore} setHighScores={setHighScores} />
+        )}
       </main>
     </>
   );
-
-  // return (
-  //   <>
-  //     <RouterProvider router={quizAppRouter} />
-  //   </>
-  // );
 };
 
 export default App;

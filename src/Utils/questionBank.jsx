@@ -38,5 +38,5 @@ export const questionBank = [
 ];
 
 export const MAX_QUESTIONS = 3;
-export const OBTAINABLE_SCORE = 2;
+export const OBTAINABLE_SCORE = 5;
 export const TOTAL_OBTAINABLE_SCORE = OBTAINABLE_SCORE * MAX_QUESTIONS;
