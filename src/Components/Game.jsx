@@ -21,7 +21,10 @@ function Game({ endGame, setEndGame, totalScore, setTotalScore }) {
     isLoading,
     isSuccess,
     isError,
-  } = useQuery("triviaQuestions", getAllQuestions);
+  } = useQuery("triviaQuestions", getAllQuestions, {
+    retry: 3,
+    refetchOnWindowFocus: false,
+  });
 
   const pickAQuestion = () => {
     if (MAX_QUESTIONS === questionCounter || questionCounter > MAX_QUESTIONS) {
