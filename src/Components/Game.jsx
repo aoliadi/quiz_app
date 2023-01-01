@@ -4,20 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 import Hud from "./Hud";
 import Question from "./Question";
-import {
-  MAX_QUESTIONS,
-  QUIZ_ROUTE_PATHS,
-  triviaApiUri,
-} from "../Utils/questionBank";
+import { MAX_QUESTIONS, QUIZ_ROUTE_PATHS, triviaApiUri } from "../Utils/Utils";
 import question from "../css/question.module.css";
 
-function Game({
-  endGame,
-  setEndGame,
-  setStartGame,
-  totalScore,
-  setTotalScore,
-}) {
+function Game({ endGame, setEndGame, totalScore, setTotalScore }) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [questionCounter, setQuestionCounter] = useState(0);
   const navigateTo = useNavigate();
@@ -33,7 +23,7 @@ function Game({
     isLoading,
     isSuccess,
     isError,
-  } = useQuery("triviaQuestions", getAllQuestions, {
+  } = useQuery("quizQuestions", getAllQuestions, {
     retry: 3,
     refetchOnWindowFocus: false,
   });

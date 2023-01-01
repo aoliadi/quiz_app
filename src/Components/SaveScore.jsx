@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import saveScore from "../css/saveScore.module.css";
-import { TOTAL_OBTAINABLE_SCORE } from "../Utils/questionBank";
+import { TOTAL_OBTAINABLE_SCORE } from "../Utils/Utils";
 
 function SaveScore({ totalScore, setHighScores }) {
   const username = useRef("");

@@ -1,6 +1,6 @@
 import { memo } from "react";
 import question from "../css/question.module.css";
-import { OBTAINABLE_SCORE } from "../Utils/questionBank";
+import { OBTAINABLE_SCORE } from "../Utils/Utils";
 // import useRandomize from "../Hooks/useRandomize";
 
 const BLACK_COLOR = "#333";

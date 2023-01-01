@@ -15,12 +15,17 @@
 }
 
 .list_item:first-child {
-  font-size: 2.85rem;
+  font-size: 3rem;
+  font-weight: bolder;
   margin-right: auto;
 }
 
-.list_item:first-child .link:hover {
+.list_item:first-child .link {
   color: var(--header-color);
+}
+
+.list_item:first-child .link:hover {
+  color: var(--text-black);
 }
 
 .list_item:not(:first-child) .link {

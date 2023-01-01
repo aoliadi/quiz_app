@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import nav from "../css/navbar.module.css";
+import { QUIZ_ROUTE_PATHS } from "../Utils/Utils";
 
 function Navbar() {
   const navLinks = ["l.", "home", "high score"];
@@ -12,7 +13,11 @@ function Navbar() {
             <li key={index} className={nav.list_item}>
               <NavLink
                 className={nav.link}
-                to={navLink === "high score" ? "high-score" : "/"}
+                to={
+                  navLink === "high score"
+                    ? `${QUIZ_ROUTE_PATHS.highScore}`
+                    : "/"
+                }
               >
                 {navLink}
               </NavLink>
