@@ -1,12 +1,13 @@
 import { memo } from "react";
 import question from "../css/question.module.css";
-import { OBTAINABLE_SCORE } from "../Utils/Utils";
+import {
+  BLACK_COLOR,
+  CORRECT_COLOR,
+  INCORRECT_COLOR,
+  OBTAINABLE_SCORE,
+  WHITE_COLOR,
+} from "../Utils/Utils";
 // import useRandomize from "../Hooks/useRandomize";
-
-const BLACK_COLOR = "#333";
-const WHITE_COLOR = "#fff";
-const CORRECT_COLOR = "green";
-const INCORRECT_COLOR = "red";
 
 function Question({ currentQuestion, setTotalScore, memoizedPickAQuestion }) {
   const optionLabels = ["a", "b", "c", "d"];
