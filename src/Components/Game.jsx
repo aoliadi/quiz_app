@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "react-query";
-import question from "../css/question.module.css";
-import { MAX_QUESTIONS, triviaApiUri } from "../Utils/questionBank";
-
 import Hud from "./Hud";
 import Question from "./Question";
+import { MAX_QUESTIONS, triviaApiUri } from "../Utils/questionBank";
+import question from "../css/question.module.css";
 
 function Game({ endGame, setEndGame, totalScore, setTotalScore }) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -67,7 +66,7 @@ function Game({ endGame, setEndGame, totalScore, setTotalScore }) {
   if (isLoading) {
     return (
       <>
-        <h1>Loading...</h1>
+        <h1 className={question.anim}>Loading...</h1>
       </>
     );
   }

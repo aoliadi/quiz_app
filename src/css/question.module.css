@@ -43,3 +43,20 @@
   z-index: -1000;
   width: 100%;
 }
+
+.anim {
+  overflow: hidden;
+  border-right: 2px solid;
+  width: 0px;
+  animation: typing 1.5s steps(100, end) infinite alternate;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 240px;
+  }
+}
