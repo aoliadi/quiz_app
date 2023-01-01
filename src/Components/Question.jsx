@@ -52,12 +52,10 @@ function Question({ currentQuestion, setTotalScore, memoizedPickAQuestion }) {
       ]);
 
       return (
-        <>
-          <div key={id} className="">
-            {createQuestionElement(obj.question)}
-            {createOptionElements(options, obj.correctAnswer)}
-          </div>
-        </>
+        <div key={id} className="">
+          {createQuestionElement(obj.question)}
+          {createOptionElements(options, obj.correctAnswer)}
+        </div>
       );
     });
   };

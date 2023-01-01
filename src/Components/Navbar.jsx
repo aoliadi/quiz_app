@@ -8,24 +8,16 @@ function Navbar() {
     <>
       <nav className={nav.container}>
         <ul className={nav.list_container}>
-          {navLinks.map((navLink) => (
-            <>
-              <li className={nav.list_item}>
-                <NavLink className={nav.link} to="/">
-                  {navLink}
-                </NavLink>
-              </li>
-            </>
+          {navLinks.map((navLink, index) => (
+            <li key={index} className={nav.list_item}>
+              <NavLink
+                className={nav.link}
+                to={navLink === "high score" ? "high-score" : "/"}
+              >
+                {navLink}
+              </NavLink>
+            </li>
           ))}
-          {/* <li className="">
-            <NavLink to="/">L.</NavLink>
-          </li>
-          <li className="">
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li className="">
-            <NavLink to="/">High Score</NavLink>
-          </li> */}
         </ul>
       </nav>
     </>

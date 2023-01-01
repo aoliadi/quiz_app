@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HighScore() {
   const scores = [
     { id: 1, position: 1, username: "playerA", totalScore: 89 },
@@ -18,9 +20,9 @@ function HighScore() {
     <>
       <section className="">
         <ul className="">{renderTopScores()}</ul>
-        <a href="" className="btn">
+        <Link to="/" className="btn">
           Go Home
-        </a>
+        </Link>
       </section>
     </>
   );

@@ -1,13 +1,26 @@
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+
 import Hud from "./Hud";
 import Question from "./Question";
-import { MAX_QUESTIONS, triviaApiUri } from "../Utils/questionBank";
+import {
+  MAX_QUESTIONS,
+  QUIZ_ROUTE_PATHS,
+  triviaApiUri,
+} from "../Utils/questionBank";
 import question from "../css/question.module.css";
 
-function Game({ endGame, setEndGame, totalScore, setTotalScore }) {
+function Game({
+  endGame,
+  setEndGame,
+  setStartGame,
+  totalScore,
+  setTotalScore,
+}) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [questionCounter, setQuestionCounter] = useState(0);
+  const navigateTo = useNavigate();
 
   const getAllQuestions = async () => {
     const res = await fetch(triviaApiUri);
@@ -27,6 +40,7 @@ function Game({ endGame, setEndGame, totalScore, setTotalScore }) {
 
   const pickAQuestion = () => {
     if (MAX_QUESTIONS === questionCounter || questionCounter > MAX_QUESTIONS) {
+      navigateTo("/" + QUIZ_ROUTE_PATHS.saveScore);
       setEndGame(true);
       setCurrentQuestion(null);
       return;

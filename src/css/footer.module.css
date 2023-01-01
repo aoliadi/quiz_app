@@ -1,10 +1,5 @@
 .container {
-  /* border: 1px solid green; */
-  /* max-height: 120px; */
-
   width: 100%;
-  /* position: fixed; */
-  /* bottom: 0; */
 }
 
 .footnote {
@@ -13,7 +8,7 @@
 
   border-top: 1px solid var(--text-black);
   padding: 1.8rem;
-  margin: 1.5rem auto;
+  margin: 0 auto;
   max-width: 70rem;
 }
 
