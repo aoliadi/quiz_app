@@ -47,6 +47,7 @@ function App() {
             path={QUIZ_ROUTE_PATHS.startGame}
             element={
               <Game
+                resetGame={resetGame}
                 endGame={endGame}
                 setTotalScore={setTotalScore}
                 totalScore={totalScore}

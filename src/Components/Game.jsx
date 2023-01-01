@@ -7,7 +7,7 @@ import Question from "./Question";
 import { MAX_QUESTIONS, QUIZ_ROUTE_PATHS, triviaApiUri } from "../Utils/Utils";
 import question from "../css/question.module.css";
 
-function Game({ endGame, setEndGame, totalScore, setTotalScore }) {
+function Game({ endGame, setEndGame, totalScore, setTotalScore, resetGame }) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [questionCounter, setQuestionCounter] = useState(0);
   const navigateTo = useNavigate();
@@ -58,6 +58,11 @@ function Game({ endGame, setEndGame, totalScore, setTotalScore }) {
     memoizedPickAQuestion();
     return () => {};
   }, [isSuccess]);
+
+  useEffect(() => {
+    resetGame();
+    return () => {};
+  }, []);
 
   if (isError) {
     return (
